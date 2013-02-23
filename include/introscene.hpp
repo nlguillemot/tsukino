@@ -13,6 +13,7 @@ public:
     IntroScene();
     ~IntroScene();
 
+    void handle_event(const sf::Event &e);
     void init();
     void update(float dt);
     void draw(sf::RenderTarget& target);
