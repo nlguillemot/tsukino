@@ -5,7 +5,7 @@
 #include <cassert>
 #include <sstream>
 #include <iostream>
-#include "menuscene.hpp"
+#include "introscene.hpp"
 
 int main()
 {
@@ -55,6 +55,6 @@ int main()
 
     ifs.close();
 
-    tsukino::MainApp app(sf::VideoMode(screensize.x,screensize.y), gametitle, new tsukino::MenuScene("mainmenu"));
+    tsukino::MainApp app(sf::VideoMode(screensize.x,screensize.y), gametitle, new tsukino::IntroScene());
     app.exec();
 }

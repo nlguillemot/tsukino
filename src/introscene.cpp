@@ -3,6 +3,11 @@
 namespace tsukino
 {
 
+IntroScene::IntroScene()
+{
+
+}
+
 void IntroScene::init()
 {
 }
