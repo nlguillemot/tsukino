@@ -34,6 +34,10 @@ private:
 
     Emitter* juggalo_emitter_;
     Emitter* juggalo_emitter2_;
+
+    AnimData* selectorAnimData;
+    Animation* p1selectorAnim;
+    Animation* p2selectorAnim;
 };
 
 }

@@ -42,6 +42,15 @@ MenuScene::MenuScene()
 {
     backgroundAnimData = new AnimData("assets/selectionbackground");
     backgroundAnim = new Animation(*backgroundAnimData);
+
+    selectorAnimData = new AnimData("assets/slotselector");
+    p1selectorAnim = new Animation(*selectorAnimData);
+    p2selectorAnim = new Animation(*selectorAnimData);
+
+    p1selectorAnim->set_origin(p1selectorAnim->point("origin"));
+    p2selectorAnim->set_origin(p2selectorAnim->point("origin"));
+    p1selectorAnim->set_tint(sf::Color(255,0,0));
+    p2selectorAnim->set_tint(sf::Color(0,0,255));
 }
 
 MenuScene::~MenuScene()
@@ -65,6 +74,10 @@ MenuScene::~MenuScene()
     delete juggaloFaceAnim2;
     delete juggalo_emitter_;
     delete juggalo_emitter2_;
+
+    delete selectorAnimData;
+    delete p1selectorAnim;
+    delete p2selectorAnim;
 }
 
 void MenuScene::init()
@@ -72,6 +85,8 @@ void MenuScene::init()
     std::ifstream ifs("menu/mainmenu.menu");
     std::string line;
 
+    bool found_first_free = false;
+    Animation* last_free = nullptr;
     while (std::getline(ifs,line))
     {
         if (line.substr(0,4) == "slot")
@@ -97,6 +112,21 @@ void MenuScene::init()
             worldpos.y = worldpos.y * default_view().GetRect().GetHeight() - rect.GetHeight()/2;
             slot->set_position(worldpos);
             slotAnims.push_back(slot);
+
+            if (animname != "slotunknown")
+            {
+                if (!found_first_free)
+                {
+                    p1selectorAnim->set_position(worldpos + sf::Vector2f(rect.GetWidth()/2,rect.GetHeight()/2));
+                    found_first_free = true;
+                }
+                last_free = slot;
+            }
+        }
+
+        if (last_free)
+        {
+            p2selectorAnim->set_position(last_free->position() + last_free->transformed_size()/2.0f);
         }
     }
 
@@ -140,6 +170,9 @@ void MenuScene::draw(sf::RenderTarget &target)
     {
         a->draw(target);
     }
+
+    p1selectorAnim->draw(target);
+    p2selectorAnim->draw(target);
 }
 
 }
