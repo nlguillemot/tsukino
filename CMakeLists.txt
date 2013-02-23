@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.6)
-project(rock-n-roll-soul)
+project(tsukino)
 
 include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -15,8 +15,8 @@ file(GLOB SRCFILES
 
 set(CMAKE_CXX_FLAGS "-std=c++11 -g -Wall")
 
-set(EXECUTABLE_NAME "rock-n-roll-soul")
-add_executable(rock-n-roll-soul ${SRCFILES} ${HEADER_FILES} ${INLINE_FILES})
+set(EXECUTABLE_NAME "tsukino")
+add_executable(tsukino ${SRCFILES} ${HEADER_FILES} ${INLINE_FILES})
 
 # Detect and add SFML
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
