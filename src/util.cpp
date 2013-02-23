@@ -1,7 +1,7 @@
 #include "util.hpp"
 #include <cmath>
 
-namespace heart
+namespace tsukino
 {
 
 sf::Vector2f unit_vector_from_angle(float degrees)

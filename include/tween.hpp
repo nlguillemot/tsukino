@@ -3,7 +3,7 @@
 #include <functional>
 #include <SFML/System.hpp>
 
-namespace heart
+namespace tsukino
 {
 
 typedef std::function<float (float)> TweenFunction;

@@ -2,7 +2,7 @@
 #include <cassert>
 #include <iostream>
 
-namespace heart
+namespace tsukino
 {
 
 Animation::Animation(const AnimData& anim_data)

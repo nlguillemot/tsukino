@@ -5,7 +5,7 @@
 #include "playerstate.hpp"
 #include "entity.hpp"
 
-namespace heart
+namespace tsukino
 {
 
 class Player : public Entity

@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "scene.hpp"
 
-namespace heart
+namespace tsukino
 {
     class MainApp
     {
@@ -22,4 +22,4 @@ namespace heart
 
         sf::RenderWindow window_;
     };
-} // end namespace heart
+} // end namespace tsukino

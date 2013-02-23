@@ -5,7 +5,7 @@
 #include <map>
 #include <SFML/Graphics.hpp>
 
-namespace heart
+namespace tsukino
 {
 
 class AnimSequence

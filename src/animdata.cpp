@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <iostream>
 
-namespace heart
+namespace tsukino
 {
 
 AnimData::AnimData(const std::string& file_name)

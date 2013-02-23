@@ -1,6 +1,6 @@
 #include "scene.hpp"
 
-namespace heart
+namespace tsukino
 {
 
 Scene::Scene()

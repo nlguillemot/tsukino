@@ -4,7 +4,7 @@
 #include <sstream>
 #include <iostream>
 
-namespace heart
+namespace tsukino
 {
 
 bool MenuLayout::load_from_file(const std::string& filename)

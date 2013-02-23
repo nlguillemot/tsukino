@@ -1,6 +1,6 @@
 #include "entity.hpp"
 
-namespace heart
+namespace tsukino
 {
 
 Entity::Entity(const std::string& style)

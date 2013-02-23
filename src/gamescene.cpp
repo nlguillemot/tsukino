@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-namespace heart
+namespace tsukino
 {
 
 GameScene::GameScene(const std::string& level)

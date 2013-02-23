@@ -1,6 +1,6 @@
 #include "effect.hpp"
 
-namespace heart
+namespace tsukino
 {
 
 Effect::Effect(const Animation& anim):

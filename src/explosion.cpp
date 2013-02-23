@@ -1,7 +1,7 @@
 #include "explosion.hpp"
 #include "util.hpp"
 
-namespace heart
+namespace tsukino
 {
 
 Explosion::Explosion(const Animation& anim, const sf::Vector2f& center, float speed, float range, TweenFunction tween):

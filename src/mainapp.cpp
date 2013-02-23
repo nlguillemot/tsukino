@@ -3,7 +3,7 @@
 #include <cassert>
 #include <iostream>
 
-namespace heart
+namespace tsukino
 {
 
 MainApp::MainApp(const sf::VideoMode& mode, const std::string& gametitle, Scene* firstscene):

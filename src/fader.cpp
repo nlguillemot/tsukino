@@ -1,7 +1,7 @@
 #include "fader.hpp"
 #include "util.hpp"
 
-namespace heart
+namespace tsukino
 {
 
 Fader::Fader(const Animation& anim, bool fadeout, const sf::Vector2f& position, float time, TweenFunction tween):

@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cmath>
 
-namespace heart
+namespace tsukino
 {
 
 Player::Player():

@@ -1,6 +1,6 @@
 #include "playerstate.hpp"
 
-namespace heart
+namespace tsukino
 {
 
 bool PlayerStateMachine::state_with_aimer_visible(PlayerState state) const

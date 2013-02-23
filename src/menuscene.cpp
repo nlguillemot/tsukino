@@ -3,7 +3,7 @@
 #include "menulayout.hpp"
 #include "util.hpp"
 
-namespace heart
+namespace tsukino
 {
 
 MenuDecoration::MenuDecoration(const std::string& style)

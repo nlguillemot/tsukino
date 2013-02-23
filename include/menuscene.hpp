@@ -5,7 +5,7 @@
 #include <functional>
 #include "animation.hpp"
 
-namespace heart
+namespace tsukino
 {
 
 class MenuDecoration

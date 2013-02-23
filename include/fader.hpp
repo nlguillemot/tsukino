@@ -3,7 +3,7 @@
 #include "effect.hpp"
 #include "tween.hpp"
 
-namespace heart
+namespace tsukino
 {
 
 class Fader : public Effect

@@ -3,7 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "animdata.hpp"
 
-namespace heart
+namespace tsukino
 {
 
 class Animation

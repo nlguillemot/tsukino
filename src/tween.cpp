@@ -1,7 +1,7 @@
 #include "tween.hpp"
 #include <cmath>
 
-namespace heart
+namespace tsukino
 {
 
 Tweener::Tweener(TweenFunction fn, float time_to_completion):

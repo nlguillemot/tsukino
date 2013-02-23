@@ -4,7 +4,7 @@
 #include <sstream>
 #include <iostream>
 
-namespace heart
+namespace tsukino
 {
 
 GameMap::PhysicsConfiguration::PhysicsConfiguration()

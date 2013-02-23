@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 
-namespace heart
+namespace tsukino
 {
 
 enum class PlayerState

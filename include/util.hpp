@@ -6,7 +6,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-namespace heart
+namespace tsukino
 {
 
 bool segment_intersects_rectangle(const sf::FloatRect& rect, const sf::Vector2f& a, const sf::Vector2f& b);

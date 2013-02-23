@@ -11,7 +11,7 @@
 #include <list>
 #include <random>
 
-namespace heart
+namespace tsukino
 {
 
 struct KeyState
