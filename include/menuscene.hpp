@@ -4,6 +4,7 @@
 #include "animation.hpp"
 
 #include <vector>
+#include <map>
 
 namespace tsukino
 {
@@ -19,7 +20,10 @@ public:
     void update(float dt);
     void draw(sf::RenderTarget &target);
 private:
-    AnimData* slotAnimData;
+    AnimData* backgroundAnimData;
+    Animation* backgroundAnim;
+
+    std::map<std::string,AnimData*> slotAnimDatas;
     std::vector<Animation*> slotAnims;
 };
 

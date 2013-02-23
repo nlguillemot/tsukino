@@ -8,12 +8,20 @@ namespace tsukino
 
 MenuScene::MenuScene()
 {
-    slotAnimData = new AnimData("assets/slot");
+    backgroundAnimData = new AnimData("assets/selectionbackground");
+    backgroundAnim = new Animation(*backgroundAnimData);
 }
 
 MenuScene::~MenuScene()
 {
-    delete slotAnimData;
+    delete backgroundAnimData;
+    delete backgroundAnim;
+
+    for (auto& kv : slotAnimDatas)
+    {
+        delete kv.second;
+    }
+
     for (Animation* a : slotAnims)
     {
         delete a;
@@ -33,12 +41,17 @@ void MenuScene::init()
             ss << line.substr(4);
 
             sf::Vector2f v;
+            std::string animname;
             ss >> v.x;
             ss >> v.y;
+            ss >> animname;
 
-            sf::View dftv = default_view();
+            if (slotAnimDatas.find(animname) == slotAnimDatas.end())
+            {
+                slotAnimDatas[animname] = new AnimData("assets/" + animname);
+            }
 
-            Animation* slot = new Animation(*slotAnimData);
+            Animation* slot = new Animation(*slotAnimDatas[animname]);
             sf::Vector2f worldpos = v;
             sf::FloatRect rect(slot->anim_rect());
             worldpos.x = worldpos.x * default_view().GetRect().GetWidth() - rect.GetWidth()/2;
@@ -65,6 +78,8 @@ void MenuScene::update(float dt)
 void MenuScene::draw(sf::RenderTarget &target)
 {
     target.Clear();
+
+    backgroundAnim->draw(target);
 
     for (Animation* a : slotAnims)
     {
