@@ -55,6 +55,6 @@ int main()
 
     ifs.close();
 
-    heart::MainApp app(sf::VideoMode(screensize.x,screensize.y), gametitle, new heart::MenuScene("mainmenu"));
+    tsukino::MainApp app(sf::VideoMode(screensize.x,screensize.y), gametitle, new tsukino::MenuScene("mainmenu"));
     app.exec();
 }
