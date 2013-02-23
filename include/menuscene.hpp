@@ -2,6 +2,7 @@
 
 #include "scene.hpp"
 #include "animation.hpp"
+#include "emitter.hpp"
 
 #include <vector>
 #include <map>
@@ -25,6 +26,14 @@ private:
 
     std::map<std::string,AnimData*> slotAnimDatas;
     std::vector<Animation*> slotAnims;
+
+    AnimData* juggaloFaceAnimData1;
+    Animation* juggaloFaceAnim1;
+    AnimData* juggaloFaceAnimData2;
+    Animation* juggaloFaceAnim2;
+
+    Emitter* juggalo_emitter_;
+    Emitter* juggalo_emitter2_;
 };
 
 }
