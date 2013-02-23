@@ -39,9 +39,11 @@ void MainApp::switch_to_scene(Scene* next_scene)
     }
 
     current_scene_ = next_scene;
-    current_scene_->init();
 
-    current_scene_->set_default_view(window_.GetDefaultView());
+    sf::View dft_view(sf::FloatRect(0,0,window_.GetWidth(),window_.GetHeight()));
+    current_scene_->set_default_view(dft_view);
+    current_scene_->set_view(dft_view);
+    current_scene_->init();
 }
 
 void MainApp::poll_events()
