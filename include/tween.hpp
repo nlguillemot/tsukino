@@ -13,6 +13,7 @@ class Tweener
 public:
     Tweener(TweenFunction fn, float time_to_completion);
 
+    void reset();
     void update(float dt);
 
     float in_value() const;
@@ -22,6 +23,7 @@ private:
     TweenFunction fn_;
     float time_to_completion_;
     float current_time_;
+
 };
 
 float tween_linear(float x);

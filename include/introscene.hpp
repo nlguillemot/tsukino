@@ -2,6 +2,7 @@
 
 #include "scene.hpp"
 #include "animation.hpp"
+#include "tween.hpp"
 
 namespace tsukino
 {
@@ -19,8 +20,18 @@ public:
     void draw(sf::RenderTarget& target);
     void exit();
 private:
+
+    Tweener* transparencyTween;
+
+
     AnimData* backgroundAnimData;
+    AnimData* juggaloAnimData;
+    AnimData* faceAnimData;
+
     Animation* backgroundAnim;
+    Animation* juggaloAnim;
+    Animation* faceAnim;
+
 };
 
 }

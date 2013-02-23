@@ -10,6 +10,10 @@ fn_(fn)
     time_to_completion_ = time_to_completion;
     current_time_ = 0.0f;
 }
+void Tweener::reset()
+{
+    current_time_ = 0.0f;
+}
 
 void Tweener::update(float dt)
 {
