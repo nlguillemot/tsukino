@@ -340,7 +340,7 @@ void Animation::fliph(bool flipped)
 
 void Animation::flipv(bool flipped)
 {
-    sprite_.FlipX(flipped);
+    sprite_.FlipY(flipped);
 }
 
 void Animation::set_hidden(bool hidden)
