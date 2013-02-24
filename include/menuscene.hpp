@@ -3,6 +3,9 @@
 #include "scene.hpp"
 #include "animation.hpp"
 #include "emitter.hpp"
+#include "tween.hpp"
+#include <SFML/Graphics.hpp>
+
 
 #include <vector>
 #include <map>
@@ -26,6 +29,7 @@ private:
 
     std::map<std::string,AnimData*> slotAnimDatas;
     std::vector<Animation*> slotAnims;
+    std::vector<std::string> slotNames;
 
     AnimData* juggaloFaceAnimData1;
     Animation* juggaloFaceAnim1;
@@ -38,6 +42,12 @@ private:
     AnimData* selectorAnimData;
     Animation* p1selectorAnim;
     Animation* p2selectorAnim;
+
+    Tweener* scrollingTextTween;
+
+    sf::String scrollingText;
+    sf::String p1name;
+    sf::String p2name;
 
     unsigned int p1selectorIndex;
     unsigned int p2selectorIndex;

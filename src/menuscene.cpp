@@ -1,6 +1,8 @@
 #include "menuscene.hpp"
 #include "explosion.hpp"
 #include "fader.hpp"
+#include "fightscene.hpp"
+
 
 #include <fstream>
 #include <sstream>
@@ -54,6 +56,8 @@ MenuScene::MenuScene()
 
     p2selectorAnim->fliph(true);
     p2selectorAnim->flipv(true);
+
+    scrollingTextTween = new Tweener(tween_linear,5);
 }
 
 MenuScene::~MenuScene()
@@ -81,10 +85,15 @@ MenuScene::~MenuScene()
     delete selectorAnimData;
     delete p1selectorAnim;
     delete p2selectorAnim;
+
+    delete scrollingTextTween;
 }
 
 void MenuScene::init()
 {
+    scrollingText.SetText("INVISIBLE JUGGALO FIGHT CLUB");
+    p1name.SetColor(sf::Color(255,0,0));
+    p2name.SetColor(sf::Color(0,0,255));
 
     std::ifstream ifs("menu/mainmenu.menu");
     std::string line;
@@ -102,9 +111,13 @@ void MenuScene::init()
 
             sf::Vector2f v;
             std::string animname;
+            std::string charactername;
             ss >> v.x;
             ss >> v.y;
             ss >> animname;
+            std::stringstream ss2;
+            ss2 << ss.rdbuf();
+            charactername = ss2.str().substr(1);
 
             if (slotAnimDatas.find(animname) == slotAnimDatas.end())
             {
@@ -121,6 +134,15 @@ void MenuScene::init()
 
             if (animname != "slotunknown")
             {
+                slotNames.push_back("Invisible " + charactername);
+            }
+            else
+            {
+                slotNames.push_back(charactername);
+            }
+
+            if (animname != "slotunknown")
+            {
                 if (!found_first_free)
                 {
                     p1selectorAnim->set_position(worldpos + sf::Vector2f(rect.GetWidth()/2,rect.GetHeight()/2));
@@ -130,9 +152,8 @@ void MenuScene::init()
                 last_free = slot;
                 p2selectorIndex = slotIndex;
             }
+            slotIndex ++;
         }
-
-        slotIndex ++;
     }
 
     if (last_free)
@@ -222,6 +243,11 @@ void MenuScene::handle_event(const sf::Event &e)
                 p2selectorIndex -= slotAnims.size()/2;
             }
         }
+        //go to fight
+        if (e.Key.Code == sf::Key::Return)
+        {
+            switch_to_next_scene(new FightScene());
+        }
     }
 }
 
@@ -229,6 +255,17 @@ void MenuScene::update(float dt)
 {
     p1selectorAnim->set_position(slotAnims[p1selectorIndex]->position() + slotAnims[p1selectorIndex]->transformed_size() / 2.0f);
     p2selectorAnim->set_position(slotAnims[p2selectorIndex]->position() + slotAnims[p2selectorIndex]->transformed_size() / 2.0f);
+    scrollingText.SetPosition(sf::Vector2f(scrollingTextTween->out_value()*(view().GetRect().GetWidth() + scrollingText.GetRect().GetWidth()) - scrollingText.GetRect().GetWidth(),0));
+    p1name.SetText(slotNames[p1selectorIndex]);
+    p2name.SetText(slotNames[p2selectorIndex]);
+
+    p1name.SetPosition(sf::Vector2f(0,view().GetRect().GetHeight() - p1name.GetRect().GetHeight()));
+    p2name.SetPosition(sf::Vector2f(view().GetRect().GetWidth() - p2name.GetRect().GetWidth(),view().GetRect().GetHeight() - p2name.GetRect().GetHeight()));
+
+    if (scrollingTextTween->done())
+    {
+        scrollingTextTween->reset();
+    }
 
     for (Animation* a : slotAnims)
     {
@@ -237,6 +274,7 @@ void MenuScene::update(float dt)
 
     juggalo_emitter_->update(dt);
     juggalo_emitter2_->update(dt);
+    scrollingTextTween->update(dt);
 }
 
 void MenuScene::draw(sf::RenderTarget &target)
@@ -255,6 +293,17 @@ void MenuScene::draw(sf::RenderTarget &target)
 
     p1selectorAnim->draw(target);
     p2selectorAnim->draw(target);
+
+    target.Draw(scrollingText);
+
+    target.Draw(p1name);
+    target.Draw(p2name);
+
+    sf::String vs("VS");
+    vs.SetPosition(sf::Vector2f(
+                       (p1name.GetPosition().x + p1name.GetRect().GetWidth() + p2name.GetPosition().x) / 2.0f - vs.GetRect().GetWidth()/2.0f,
+                       view().GetRect().GetHeight() - vs.GetRect().GetHeight()));
+    target.Draw(vs);
 }
 
 }

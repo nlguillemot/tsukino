@@ -1,19 +1,19 @@
-slot 0.1 0.7 slotunknown
-slot 0.2 0.7 slotgreen
-slot 0.3 0.7 slotgreen
-slot 0.4 0.7 slotgreen
-slot 0.5 0.7 slotgreen
-slot 0.6 0.7 slotred
-slot 0.7 0.7 slotred
-slot 0.8 0.7 slotred
-slot 0.9 0.7 slotunknown
+slot 0.1 0.7 slotunknown <LOCKED>
+slot 0.2 0.7 slotgreen Violent J
+slot 0.3 0.7 slotgreen Big Baby Chips
+slot 0.4 0.7 slotgreen Man
+slot 0.5 0.7 slotgreen Big Baby Sweets
+slot 0.6 0.7 slotred Shaggy 2 Dope
+slot 0.7 0.7 slotred Sugar Wolf
+slot 0.8 0.7 slotred Sugar Bear
+slot 0.9 0.7 slotunknown <LOCKED>
 
-slot 0.1 0.85 slotunknown
-slot 0.2 0.85 slotblue
-slot 0.3 0.85 slotblue
-slot 0.4 0.85 slotblue
-slot 0.5 0.85 slotblue
-slot 0.6 0.85 slotblue
-slot 0.7 0.85 slotred
-slot 0.8 0.85 slotred
-slot 0.9 0.85 slotunknown
+slot 0.1 0.85 slotunknown <LOCKED>
+slot 0.2 0.85 slotblue Obama
+slot 0.3 0.85 slotblue Lil' Poot
+slot 0.4 0.85 slotblue Super Violent J
+slot 0.5 0.85 slotblue Magical Girl
+slot 0.6 0.85 slotblue Magic Ninja 2
+slot 0.7 0.85 slotred Ronald McDonald
+slot 0.8 0.85 slotred Dirty Sanchez
+slot 0.9 0.85 slotunknown <LOCKED>
