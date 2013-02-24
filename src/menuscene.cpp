@@ -51,6 +51,9 @@ MenuScene::MenuScene()
     p2selectorAnim->set_origin(p2selectorAnim->point("origin"));
     p1selectorAnim->set_tint(sf::Color(255,0,0));
     p2selectorAnim->set_tint(sf::Color(0,0,255));
+
+    p2selectorAnim->fliph(true);
+    p2selectorAnim->flipv(true);
 }
 
 MenuScene::~MenuScene()
@@ -82,11 +85,14 @@ MenuScene::~MenuScene()
 
 void MenuScene::init()
 {
+
     std::ifstream ifs("menu/mainmenu.menu");
     std::string line;
 
     bool found_first_free = false;
     Animation* last_free = nullptr;
+
+    unsigned int slotIndex = 0;
     while (std::getline(ifs,line))
     {
         if (line.substr(0,4) == "slot")
@@ -118,16 +124,20 @@ void MenuScene::init()
                 if (!found_first_free)
                 {
                     p1selectorAnim->set_position(worldpos + sf::Vector2f(rect.GetWidth()/2,rect.GetHeight()/2));
+                    p1selectorIndex = slotIndex;
                     found_first_free = true;
                 }
                 last_free = slot;
+                p2selectorIndex = slotIndex;
             }
         }
 
-        if (last_free)
-        {
-            p2selectorAnim->set_position(last_free->position() + last_free->transformed_size()/2.0f);
-        }
+        slotIndex ++;
+    }
+
+    if (last_free)
+    {
+        p2selectorAnim->set_position(last_free->position() + last_free->transformed_size()/2.0f);
     }
 
 
@@ -143,11 +153,49 @@ void MenuScene::init()
 
 void MenuScene::handle_event(const sf::Event &e)
 {
-
+    if (e.Type == sf::Event::KeyPressed)
+    {
+        //Player 1
+        if (e.Key.Code == sf::Key::Right)
+        {
+            if (p1selectorIndex == (slotAnims.size() - 1)) {
+                p1selectorIndex = 0;
+            } else {
+                p1selectorIndex += 1;
+            }
+        }
+        if (e.Key.Code == sf::Key::Left)
+        {
+            if (p1selectorIndex == 0) {
+                p1selectorIndex = slotAnims.size() - 1;
+            } else {
+                p1selectorIndex -= 1;
+            }
+        }
+        if (e.Key.Code == sf::Key::Down)
+        {
+            if (p1selectorIndex > (slotAnims.size() - 1)/2) {
+                p1selectorIndex -= slotAnims.size()/2;
+            } else {
+                p1selectorIndex += slotAnims.size()/2;
+            }
+        }
+        if (e.Key.Code == sf::Key::Up)
+        {
+            if (p1selectorIndex < (slotAnims.size())/2) {
+                p1selectorIndex += slotAnims.size()/2;
+            } else {
+                p1selectorIndex -= slotAnims.size()/2;
+            }
+        }
+    }
 }
 
 void MenuScene::update(float dt)
 {
+    p1selectorAnim->set_position(slotAnims[p1selectorIndex]->position() + slotAnims[p1selectorIndex]->transformed_size() / 2.0f);
+    p2selectorAnim->set_position(slotAnims[p2selectorIndex]->position() + slotAnims[p2selectorIndex]->transformed_size() / 2.0f);
+
     for (Animation* a : slotAnims)
     {
         a->update(dt);

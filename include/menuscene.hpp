@@ -38,6 +38,9 @@ private:
     AnimData* selectorAnimData;
     Animation* p1selectorAnim;
     Animation* p2selectorAnim;
+
+    unsigned int p1selectorIndex;
+    unsigned int p2selectorIndex;
 };
 
 }
