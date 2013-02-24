@@ -27,10 +27,14 @@ private:
     AnimData* backgroundAnimData;
     AnimData* juggaloAnimData;
     AnimData* faceAnimData;
+    AnimData* titleAnimData;
+    AnimData* startAnimData;
 
     Animation* backgroundAnim;
     Animation* juggaloAnim;
     Animation* faceAnim;
+    Animation* titleAnim;
+    Animation* startAnim;
 
 };
 

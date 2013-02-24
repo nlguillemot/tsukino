@@ -1,5 +1,0 @@
-frames 1
-sequence idle 0 1
-sequence move 0 1
-sequence fall 0 1
-sequence jump 0 1

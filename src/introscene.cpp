@@ -11,10 +11,15 @@ IntroScene::IntroScene()
  backgroundAnimData = new AnimData("assets/title_backdrop");
  juggaloAnimData = new AnimData("assets/title_juggalos");
  faceAnimData = new AnimData("assets/title_faces");
+ titleAnimData = new AnimData("assets/title_text");
+ startAnimData = new AnimData("assets/start");
 
  backgroundAnim = new Animation(*backgroundAnimData);
  juggaloAnim = new Animation(*juggaloAnimData);
  faceAnim = new Animation(*faceAnimData);
+ titleAnim = new Animation(*titleAnimData);
+ startAnim = new Animation(*startAnimData);
+
 }
 
 IntroScene::~IntroScene()
@@ -26,12 +31,19 @@ IntroScene::~IntroScene()
  delete faceAnimData;
  delete faceAnim;
  delete transparencyTween;
+ delete titleAnimData;
+ delete titleAnim;
+ delete startAnimData;
+ delete startAnim;
 }
 
 void IntroScene::init()
 {
     juggaloAnim->set_alpha(0);
     faceAnim->set_alpha(0);
+    titleAnim->set_position(sf::Vector2f(0,-240));
+    startAnim->set_position(sf::Vector2f(224,420));
+    startAnim->play("idle");
 }
 
 void IntroScene::handle_event(const sf::Event &e)
@@ -51,14 +63,23 @@ void IntroScene::update(float dt)
             transparencyTween->reset();
 
         }
-    } else {
+    } else if (faceAnim->alpha() < 171) {
         transparencyTween->update(dt);
         faceAnim->set_alpha(transparencyTween->out_value()*171);
+        if (faceAnim->alpha() >= 171) {
+            transparencyTween->reset();
+        }
+    } else if (titleAnim->position().y < -60) {
+        transparencyTween->update(dt);
+        titleAnim->set_position(sf::Vector2f(0, -240 + transparencyTween->out_value()*240 ));
     }
 
+
+    titleAnim->update(dt);
     backgroundAnim->update(dt);
     juggaloAnim->update(dt);
     faceAnim->update(dt);
+    startAnim->update(dt);
 
 }
 
@@ -68,6 +89,8 @@ void IntroScene::draw(sf::RenderTarget& target)
     backgroundAnim->draw(target);
     juggaloAnim->draw(target);
     faceAnim->draw(target);
+    titleAnim->draw(target);
+    startAnim->draw(target);
 }
 
 void IntroScene::exit()
