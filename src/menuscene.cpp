@@ -188,6 +188,40 @@ void MenuScene::handle_event(const sf::Event &e)
                 p1selectorIndex -= slotAnims.size()/2;
             }
         }
+
+        //Player 2
+        if (e.Key.Code == sf::Key::D)
+        {
+            if (p2selectorIndex == (slotAnims.size() - 1)) {
+                p2selectorIndex = 0;
+            } else {
+                p2selectorIndex += 1;
+            }
+        }
+        if (e.Key.Code == sf::Key::A)
+        {
+            if (p2selectorIndex == 0) {
+                p2selectorIndex = slotAnims.size() - 1;
+            } else {
+                p2selectorIndex -= 1;
+            }
+        }
+        if (e.Key.Code == sf::Key::S)
+        {
+            if (p2selectorIndex > (slotAnims.size() - 1)/2) {
+                p2selectorIndex -= slotAnims.size()/2;
+            } else {
+                p2selectorIndex += slotAnims.size()/2;
+            }
+        }
+        if (e.Key.Code == sf::Key::W)
+        {
+            if (p2selectorIndex < (slotAnims.size())/2) {
+                p2selectorIndex += slotAnims.size()/2;
+            } else {
+                p2selectorIndex -= slotAnims.size()/2;
+            }
+        }
     }
 }
 
