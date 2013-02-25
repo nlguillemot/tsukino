@@ -44,6 +44,7 @@ void IntroScene::init()
     titleAnim->set_position(sf::Vector2f(0,-240));
     startAnim->set_position(sf::Vector2f(224,420));
     startAnim->play("idle");
+
 }
 
 void IntroScene::handle_event(const sf::Event &e)

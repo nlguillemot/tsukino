@@ -2,6 +2,7 @@
 #include "explosion.hpp"
 #include "fader.hpp"
 #include "fightscene.hpp"
+#include "loadingscene.hpp"
 
 
 #include <fstream>
@@ -92,6 +93,11 @@ MenuScene::~MenuScene()
 void MenuScene::init()
 {
     scrollingText.SetText("INVISIBLE JUGGALO FIGHT CLUB");
+    enterToPlay.SetText("PRESS ENTER WHEN READY TO START PLAYING");
+    enterToPlay.SetColor(sf::Color(128,128,128));
+    enterToPlay.SetSize(18);
+    enterToPlay.SetPosition(sf::Vector2f(view().GetRect().GetWidth()/2 - enterToPlay.GetRect().GetWidth()/2, 275));
+
     p1name.SetColor(sf::Color(255,0,0));
     p2name.SetColor(sf::Color(0,0,255));
 
@@ -246,7 +252,7 @@ void MenuScene::handle_event(const sf::Event &e)
         //go to fight
         if (e.Key.Code == sf::Key::Return)
         {
-            switch_to_next_scene(new FightScene());
+            switch_to_next_scene(new LoadingScene(new FightScene()));
         }
     }
 }
@@ -298,6 +304,7 @@ void MenuScene::draw(sf::RenderTarget &target)
 
     target.Draw(p1name);
     target.Draw(p2name);
+    target.Draw(enterToPlay);
 
     sf::String vs("VS");
     vs.SetPosition(sf::Vector2f(

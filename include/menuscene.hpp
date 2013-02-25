@@ -48,6 +48,7 @@ private:
     sf::String scrollingText;
     sf::String p1name;
     sf::String p2name;
+    sf::String enterToPlay;
 
     unsigned int p1selectorIndex;
     unsigned int p2selectorIndex;
